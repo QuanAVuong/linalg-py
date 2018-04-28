@@ -11,3 +11,6 @@ class Vector(object):
     
     except TypeError:
       raise TypeError("The coordinates must be an iterable")
+
+  def __str__(self):
+    return f"Vector: {self.coordinates}"

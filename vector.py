@@ -20,3 +20,19 @@ class Vector(object):
 
   def __eq__(self, v):
     return self.coordinates == v.coordinates
+
+
+vector1 = Vector([1, 4, -1])
+print(repr(vector1))
+print(vector1)
+
+vector2 = Vector([0, 2, 5])
+print(repr(vector2))
+print(vector2)
+
+vector3 = Vector([1, 4, -1])
+print(repr(vector2))
+print(vector2)
+
+print(vector1 == vector2)
+print(vector1 == vector3)

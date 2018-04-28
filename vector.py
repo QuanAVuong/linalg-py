@@ -5,3 +5,9 @@ class Vector(object):
         raise ValueError
       self.coordinates = tuple(coordinates)
       self.dimension = len(coordinates)
+    
+    except ValueError:
+      raise ValueError("The coordinates must be nonempty")
+    
+    except TypeError:
+      raise TypeError("The coordinates must be an iterable")

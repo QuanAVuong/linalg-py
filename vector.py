@@ -14,3 +14,6 @@ class Vector(object):
 
   def __str__(self):
     return f"Vector: {self.coordinates}"
+
+  def __eq__(self, v):
+    return self.coordinates == v.coordinates

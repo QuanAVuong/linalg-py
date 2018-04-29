@@ -44,3 +44,4 @@ print(vector1 == vector2)
 print(vector1 == vector3)
 
 print(f"{vector1} plus\n{vector2} =\n{vector1.plus(vector2)} ")
+print(f"{vector1} minus\n{vector2} =\n{vector1.minus(vector2)} ")

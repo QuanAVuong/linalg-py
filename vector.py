@@ -28,7 +28,11 @@ class Vector(object):
     return Vector([ x - y for x, y in zip(self.coordinates, v.coordinates) ])
   
   def multiply_scalar(self, c):
-    return Vector([ x * c for x in self.coordinates ])  
+    return Vector([ x * c for x in self.coordinates ])
+
+  def magnitude(self):
+    from math import sqrt
+    return sqrt(sum([x ** 2 for x in self.coordinates]))
 
 vector1 = Vector([1, 4, -1])
 print(repr(vector1))
@@ -47,4 +51,5 @@ print(vector1 == vector3)
 
 print(f"{vector1} plus\n{vector2} =\n{vector1.plus(vector2)} ")
 print(f"{vector2} minus\n{vector3} =\n{vector2.minus(vector3)} ")
-print(f"{vector3} multiply {5} =\n{vector1.multiply_scalar(5)} ")
+print(f"{vector3} multiply {5} =\n{vector3.multiply_scalar(5)} ")
+print(f"{vector2} magnitude = {vector2.magnitude()} ")

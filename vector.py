@@ -36,7 +36,7 @@ class Vector(object):
 
   def normalize(self):
     try:
-      return self.multiply_scalar( 1. / self.magnitude )
+      return self.multiply_scalar( 1 / self.magnitude() )
     except ZeroDivisionError:
       raise Exception("Zero vector cannot be normalized")
 
@@ -59,4 +59,4 @@ print(f"{vector1} plus\n{vector2} =\n{vector1.plus(vector2)} ")
 print(f"{vector2} minus\n{vector3} =\n{vector2.minus(vector3)} ")
 print(f"{vector3} scalar multiply {5} =\n{vector3.multiply_scalar(5)}")
 print(f"{vector2} magnitude = {vector2.magnitude()} ")
-print(f"{vector2} normalized ie. unit vector = {vector2.normalize()}")
+print(f"{vector2} normalized ie. unit vector =\n{vector2.normalize()}")

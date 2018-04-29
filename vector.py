@@ -32,7 +32,13 @@ class Vector(object):
 
   def magnitude(self):
     from math import sqrt
-    return sqrt(sum([x ** 2 for x in self.coordinates]))
+    return sqrt(sum([ x ** 2 for x in self.coordinates ]))
+
+  def normalize(self):
+    try:
+      return self.multiply_scalar( 1. / self.magnitude )
+    except ZeroDivisionError:
+      raise Exception("Zero vector cannot be normalized")
 
 vector1 = Vector([1, 4, -1])
 print(repr(vector1))
@@ -51,5 +57,6 @@ print(vector1 == vector3)
 
 print(f"{vector1} plus\n{vector2} =\n{vector1.plus(vector2)} ")
 print(f"{vector2} minus\n{vector3} =\n{vector2.minus(vector3)} ")
-print(f"{vector3} multiply {5} =\n{vector3.multiply_scalar(5)} ")
+print(f"{vector3} scalar multiply {5} =\n{vector3.multiply_scalar(5)}")
 print(f"{vector2} magnitude = {vector2.magnitude()} ")
+print(f"{vector2} normalized ie. unit vector = {vector2.normalize()}")

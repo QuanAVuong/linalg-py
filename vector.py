@@ -22,23 +22,26 @@ class Vector(object):
     return self.coordinates == v.coordinates
 
   def plus(self, v):
-    return Vector([ x + y for x, y in zip(self.coordinates, v.coordinates) ])
+    return Vector([ s + v for s, v in zip(self.coordinates, v.coordinates) ])
   
   def minus(self, v):
-    return Vector([ x - y for x, y in zip(self.coordinates, v.coordinates) ])
+    return Vector([ s - v for s, v in zip(self.coordinates, v.coordinates) ])
   
   def multiply_scalar(self, c):
-    return Vector([ x * c for x in self.coordinates ])
+    return Vector([ s * c for s in self.coordinates ])
 
   def magnitude(self):
     from math import sqrt
-    return sqrt(sum([ x ** 2 for x in self.coordinates ]))
+    return sqrt(sum([ s ** 2 for s in self.coordinates ]))
 
   def normalize(self):
     try:
       return self.multiply_scalar( 1 / self.magnitude() )
     except ZeroDivisionError:
       raise Exception("Zero vector cannot be normalized")
+
+  def dot(self, v):
+    return sum([ s * v for s, v in zip( self.coordinates, v.coordinates ) ])
 
 vector1 = Vector([1, 4, -1])
 print(repr(vector1))
@@ -60,3 +63,4 @@ print(f"{vector2} minus\n{vector3} =\n{vector2.minus(vector3)} ")
 print(f"{vector3} scalar multiply {5} =\n{vector3.multiply_scalar(5)}")
 print(f"{vector2} magnitude = {vector2.magnitude()} ")
 print(f"{vector2} normalized ie. unit vector =\n{vector2.normalize()}")
+print(f"{vector1} dot product\n{vector2} =\n{vector1.dot(vector2)} ")

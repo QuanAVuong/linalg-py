@@ -55,7 +55,12 @@ class Vector(object):
         return radians * (180 / pi)
       else:
         return radians
-        
+    
+    except Exception as e:
+      if str(e) == self.CANNOT_NORMALIZE_ZERO_VECTOR_MSG:
+        raise Exception("Cannot compute an angle with a zero vector")
+      else:
+        raise e
 
 vector1 = Vector([1, 4, -1])
 print(repr(vector1))

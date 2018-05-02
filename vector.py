@@ -1,3 +1,6 @@
+    from math import sqrt
+from math import sqrt, acos
+
 class Vector(object):
   def __init__(self, coordinates):
     try:
@@ -31,7 +34,6 @@ class Vector(object):
     return Vector([ s * c for s in self.coordinates ])
 
   def magnitude(self):
-    from math import sqrt
     return sqrt(sum([ s ** 2 for s in self.coordinates ]))
 
   def normalize(self):
@@ -42,6 +44,13 @@ class Vector(object):
 
   def dot(self, v):
     return sum([ s * v for s, v in zip( self.coordinates, v.coordinates ) ])
+
+  def angle(self, v, in_degrees=False):
+    try:
+      u1 = self.normalize()
+      u2 = v.normalize()
+      radians = acos(u1.dot(u2))
+
 
 vector1 = Vector([1, 4, -1])
 print(repr(vector1))

@@ -1,5 +1,5 @@
     from math import sqrt
-from math import sqrt, acos
+from math import sqrt, acos, pi
 
 class Vector(object):
   def __init__(self, coordinates):
@@ -51,6 +51,11 @@ class Vector(object):
       u2 = v.normalize()
       radians = acos(u1.dot(u2))
 
+      if in_degrees:
+        return radians * (180 / pi)
+      else:
+        return radians
+        
 
 vector1 = Vector([1, 4, -1])
 print(repr(vector1))

@@ -1,4 +1,3 @@
-    from math import sqrt
 from math import sqrt, acos, pi
 
 class Vector(object):
@@ -57,7 +56,8 @@ class Vector(object):
         return radians
     
     except Exception as e:
-      if str(e) == self.CANNOT_NORMALIZE_ZERO_VECTOR_MSG:
+      # if str(e) == self.CANNOT_NORMALIZE_ZERO_VECTOR_MSG:
+      if str(e) == "math domain error":
         raise Exception("Cannot compute an angle with a zero vector")
       else:
         raise e
@@ -71,8 +71,12 @@ print(repr(vector2))
 print(vector2)
 
 vector3 = Vector([1, 4, -1])
-print(repr(vector2))
-print(vector2)
+print(repr(vector3))
+print(vector3)
+
+vector0 = Vector([0, 0, 0])
+print(repr(vector0))
+print(vector0)
 
 print(vector1 == vector2)
 print(vector1 == vector3)
@@ -82,4 +86,10 @@ print(f"{vector2} minus\n{vector3} =\n{vector2.minus(vector3)} ")
 print(f"{vector3} scalar multiply {5} =\n{vector3.multiply_scalar(5)}")
 print(f"{vector2} magnitude = {vector2.magnitude()} ")
 print(f"{vector2} normalized ie. unit vector =\n{vector2.normalize()}")
-print(f"{vector1} dot product\n{vector2} =\n{vector1.dot(vector2)} ")
+# print(f"{vector0} normalized ie. unit vector =\n{vector0.normalize()}")
+print(f"{vector1} dot product\n{vector2} = {vector1.dot(vector2)} ")
+print(f"{vector1} dot product\n{vector3} = {vector1.dot(vector3)} ")
+
+print(f"Angle bewtween {vector1} and {vector2} \n = {vector1.angle(vector2)} radians")
+print(f"Angle bewtween {vector1} and {vector2} \n = {vector1.angle(vector2, True)} degrees")
+# print(f"Angle bewtween {vector1} and {vector3} \n = {vector1.angle(vector3)} ")
